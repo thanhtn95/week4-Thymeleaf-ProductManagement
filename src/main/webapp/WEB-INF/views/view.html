@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+<body>
+<fieldset style="height: fit-content;width: fit-content">
+    <legend><h2 style="color: blueviolet">Product Info</h2></legend>
+    <div id="form">
+        <form th:object="${product}">
+            <div>
+                <label>ID:</label>
+                <input type="number" disabled th:field="*{id}"/>
+            </div>
+            <div>
+                <label>Product Name:</label>
+                <input type="text" disabled th:field="*{name}"/>
+            </div>
+            <div>
+                <label>Price:</label>
+                <input type="number" disabled th:field="*{price}"/>
+            </div>
+            <div>
+                <label>Quantity:</label>
+                <input type="number" disabled th:field="*{quantity}"/>
+            </div>
+            <div>
+                <label>Description:</label>
+                <input type="text" disabled th:field="*{description}"/>
+            </div>
+        </form>
+        <p><a th:href="@{/}"><button type="button">Back</button></a></p>
+    </div>
+</fieldset>
+</body>
+</html>

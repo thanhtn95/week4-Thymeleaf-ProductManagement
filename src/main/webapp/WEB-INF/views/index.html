@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+<body>
+<fieldset style="width: fit-content;height: fit-content">
+    <legend><h2 style="color: crimson">Product List</h2></legend>
+    <table id="customers">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Description</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="row,rowStat : ${productList}">
+            <td th:text="${row.getId()}"></td>
+            <td><a th:href="@{/{id}/view(id=${row.getId()})}" th:text="${row.getName()}"></a></td>
+            <td th:text="${row.getPrice()}"></td>
+            <td th:text="${row.getQuantity()}"></td>
+            <td th:text="${row.getDescription()}"></td>
+            <td><a onclick="return confirm('Are You Sure?')" th:href="@{/{id}/delete(id=${row.getId()})}">
+                <button type="button">Delete</button>
+            </a></td>
+            <td><a th:href="@{/{id}/edit(id=${row.getId()})}">
+                <button type="button">Edit</button>
+            </a></td>
+        </tr>
+        </tbody>
+    </table>
+</fieldset>
+<p><a th:href="@{newProduct}">
+    <button type="button"> Add new Product</button>
+</a></p>
+</body>
+</html>

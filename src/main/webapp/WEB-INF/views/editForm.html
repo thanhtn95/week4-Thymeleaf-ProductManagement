@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+<body>
+<fieldset style="height: fit-content;width: fit-content">
+    <legend><h2 style="color: blueviolet">Edit Product Info</h2></legend>
+    <div id="form">
+        <form action="#" th:action="@{/doEdit}" th:object="${product}" method="post" novalidate="novalidate">
+            <div>
+                <label>ID:</label>
+                <input type="number" readonly="true" th:field="*{id}"/>
+            </div>
+            <div>
+                <label>Product Name:</label>
+                <input type="text" th:field="*{name}"/>
+            </div>
+            <div>
+                <label>Price:</label>
+                <input type="number" th:field="*{price}"/>
+            </div>
+            <div>
+                <label>Quantity:</label>
+                <input type="number" th:field="*{quantity}"/>
+            </div>
+            <div>
+                <label>Description:</label>
+                <input type="text" th:field="*{description}"/>
+            </div>
+            <p><button type="submit" onclick="return confirm('Are You Sure')">Update Info</button></p>
+        </form>
+        <p><a th:href="@{/}"><button type="button">Back</button></a></p>
+    </div>
+</fieldset>
+</body>
+</html>
